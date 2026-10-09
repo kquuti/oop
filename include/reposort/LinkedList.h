@@ -56,7 +56,7 @@ public:
             toDelete = previous->next;
             previous->next = toDelete->next;
             if (toDelete == tail_) {
-                tail_ = previous;  // видалили останній елемент
+               tail_ = previous;  // видалили останній елемент
             }
         }
         delete toDelete;
