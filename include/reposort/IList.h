@@ -1,6 +1,9 @@
 #pragma once
 
 #include <cstddef>
+#include <string>
+
+#include "reposort/TextFormat.h"
 
 /// Інтерфейс списку елементів типу T.
 template <typename T>
@@ -28,10 +31,23 @@ public:
         return size() == 0;
     }
 
-    /// Міняє місцями два елементи (потрібно буде для сортування).
+    /// Міняє місцями два елементи (потрібно для сортування).
     void swap(std::size_t i, std::size_t j) {
         T temp = get(i);
         set(i, get(j));
         set(j, temp);
+    }
+
+    /// Текстове подання списку у вигляді [a, b, c].
+    std::string toString() const {
+        std::string result = "[";
+        for (std::size_t i = 0; i < size(); ++i) {
+            if (i > 0) {
+                result += ", ";
+            }
+            result += toText(get(i));
+        }
+        result += "]";
+        return result;
     }
 };

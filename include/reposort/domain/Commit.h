@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <ostream>
 #include <string>
 
 /// Один коміт у репозиторії.
@@ -46,10 +47,23 @@ public:
                std::to_string(linesChanged_) + " lines | " + shortMessage(30);
     }
 
+    /// Природний порядок: хронологічний, а за однакового часу за id.
+    bool operator<(const Commit& other) const {
+        if (timestamp_ != other.timestamp_) {
+            return timestamp_ < other.timestamp_;
+        }
+        return id_ < other.id_;
+    }
+
 private:
     std::string id_;
     std::string author_;
     std::int64_t timestamp_ = 0;
     std::string message_;
     int linesChanged_ = 0;
+};
+
+/// Виведення коміту в потік (використовується в toText).
+inline std::ostream& operator<<(std::ostream& stream, const Commit& commit) {
+    return stream << commit.toString();
 };
