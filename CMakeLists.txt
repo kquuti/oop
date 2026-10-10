@@ -27,6 +27,7 @@ add_executable(unit_tests
   tests/test_sorting.cpp
   tests/test_commit.cpp
   tests/test_comparators.cpp
+  tests/test_registry.cpp
 )
 target_include_directories(unit_tests PRIVATE include)
 target_link_libraries(unit_tests PRIVATE GTest::gtest_main)
