@@ -29,6 +29,8 @@ add_executable(unit_tests
   tests/test_comparators.cpp
   tests/test_registry.cpp
   tests/test_text_random.cpp
+  tests/test_domain.cpp
+  tests/test_rules_reports.cpp
 )
 target_include_directories(unit_tests PRIVATE include)
 target_link_libraries(unit_tests PRIVATE GTest::gtest_main)
