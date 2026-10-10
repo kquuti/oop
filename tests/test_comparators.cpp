@@ -10,6 +10,9 @@
 #include "reposort/MergeSort.h"
 #include "reposort/QuickSort.h"
 #include "reposort/domain/Commit.h"
+#include "reposort/HeapSort.h"
+#include "reposort/SelectionSort.h"
+#include "reposort/ShellSort.h"
 
 namespace {
 
@@ -69,7 +72,8 @@ template <typename SorterType>
 class CommitSortTest : public ::testing::Test {};
 
 using AllSorters =
-    ::testing::Types<InsertionSort<Commit>, MergeSort<Commit>, QuickSort<Commit>>;
+    ::testing::Types<InsertionSort<Commit>, SelectionSort<Commit>, ShellSort<Commit>,
+                     MergeSort<Commit>, QuickSort<Commit>, HeapSort<Commit>>;
 TYPED_TEST_SUITE(CommitSortTest, AllSorters);
 
 TYPED_TEST(CommitSortTest, ByLinesDescending) {

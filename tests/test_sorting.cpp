@@ -11,6 +11,9 @@
 #include "reposort/LinkedList.h"
 #include "reposort/MergeSort.h"
 #include "reposort/QuickSort.h"
+#include "reposort/HeapSort.h"
+#include "reposort/SelectionSort.h"
+#include "reposort/ShellSort.h"
 
 namespace {
 
@@ -58,7 +61,8 @@ void expectSortsCorrectly(const ISortStrategy<int>& sorter,
 template <typename SorterType>
 class SortTest : public ::testing::Test {};
 
-using SorterTypes = ::testing::Types<InsertionSort<int>, MergeSort<int>, QuickSort<int>>;
+using SorterTypes = ::testing::Types<InsertionSort<int>, SelectionSort<int>, ShellSort<int>,
+                                     MergeSort<int>, QuickSort<int>, HeapSort<int>>;
 TYPED_TEST_SUITE(SortTest, SorterTypes);
 
 TYPED_TEST(SortTest, EmptyList) {
